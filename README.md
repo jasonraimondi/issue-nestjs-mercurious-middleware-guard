@@ -1,5 +1,21 @@
 # nest-mercurious-middleware-guard
 
+## What is wrong?
+
+**When attaching a user to the FasityRequest in a Middleware, the user field is undefined when attempting to reference that user in a Guard.**
+
+Based on the documentation here: https://docs.nestjs.com/guards
+
+> Middleware is a fine choice for authentication, since things like token validation and attaching properties to the request object are not strongly connected with a particular route context (and its metadata)
+
+And the GraphQL documentation here: https://docs.nestjs.com/graphql/other-features
+
+> You can use standard guards, interceptors, filters and pipes in the same fashion with GraphQL as with any RESTful application.
+
+I read it as I should be able to attach the current_user to the request, and then reference that user later.
+
+## Example:
+
 Starting with the [33-graphql-mercurius](https://github.com/nestjs/nest/tree/master/sample/33-graphql-mercurius)
 
 See the [diff adding the DemoMiddleware and DemoGuard](https://github.com/jasonraimondi/nest-mercurious-middleware-guard/commit/850cbf40073b48b6bbd2cf754f1320fdb09e273d)
