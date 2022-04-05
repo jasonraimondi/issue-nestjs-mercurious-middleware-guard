@@ -12,7 +12,7 @@ And the GraphQL documentation here: https://docs.nestjs.com/graphql/other-featur
 
 > You can use standard guards, interceptors, filters and pipes in the same fashion with GraphQL as with any RESTful application.
 
-I read it as I should be able to attach the current_user to the request, and then reference that user later.
+Based on the documentation, I read it as I should be able to attach the current_user to the request in a middleware, and then reference that user later, in a guard, controller, resolver, etc.
 
 ## Example:
 
