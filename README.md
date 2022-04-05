@@ -44,6 +44,7 @@ Our middleware is [attaching the user to the response](https://github.com/jasonr
 
 After querying for the recipes, there is no [GUARD USER](https://github.com/jasonraimondi/nest-mercurious-middleware-guard/blob/main/src/__demo.ts#L17-L18) on the response
 
+This is the logs that are showing up when the user is missing. We should not receive the two "undefined" fields below.
 
 ```bash
 middleware has run
