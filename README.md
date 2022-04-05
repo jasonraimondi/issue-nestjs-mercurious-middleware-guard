@@ -2,7 +2,7 @@
 
 ## What is wrong?
 
-**When attaching a user to the FasityRequest in a Middleware, the user field is undefined when attempting to reference that user in a Guard.**
+**When attaching a user to the FasityRequest in a Middleware, when attempting to reference that user in a Guard, the user field is undefined.**
 
 Based on the documentation here: https://docs.nestjs.com/guards
 
