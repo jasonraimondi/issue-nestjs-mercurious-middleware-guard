@@ -1,9 +1,9 @@
 import { MiddlewareConsumer, Module, NestModule } from "@nestjs/common";
-import { GraphQLModule } from '@nestjs/graphql';
-import { MercuriusDriver, MercuriusDriverConfig } from '@nestjs/mercurius';
-import { RecipesModule } from './recipes/recipes.module';
+import { GraphQLModule } from "@nestjs/graphql";
+import { MercuriusDriver, MercuriusDriverConfig } from "@nestjs/mercurius";
+import { RecipesModule } from "./recipes/recipes.module";
 import { FastifyReply, FastifyRequest } from "fastify";
-import { DemoMiddleware } from "./__demo";
+import { ClassDemoMiddleware } from "./__demo";
 
 @Module({
   imports: [
@@ -13,22 +13,17 @@ import { DemoMiddleware } from "./__demo";
       autoSchemaFile: "schema.gql",
       subscription: true,
       graphiql: true,
-      context: (request: FastifyRequest, reply: FastifyReply) => {
-        const user = request.user;
-        console.log("GRAPHQL CONTEXT USER", user);
-        return {
-          user,
-          req: request,
-          res: reply,
-        };
-      },
-    }),
-  ],
+      context: (request: FastifyRequest, reply: FastifyReply) => ({
+        req: request,
+        res: reply
+      })
+    })
+  ]
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer): void {
     consumer
-      .apply(DemoMiddleware)
+      .apply(ClassDemoMiddleware)
       .forRoutes("(.*)");
   }
 }

@@ -1,5 +1,6 @@
 declare module "fastify" {
   interface FastifyRequest {
-    user?: any;
+    fnuser?: any;
+    classuser?: any;
   }
 }

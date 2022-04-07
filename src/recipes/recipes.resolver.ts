@@ -12,7 +12,7 @@ import { NewRecipeInput } from './dto/new-recipe.input';
 import { RecipesArgs } from './dto/recipes.args';
 import { Recipe } from './models/recipe.model';
 import { RecipesService } from './recipes.service';
-import { DemoGuard } from "../__demo";
+import { DemoGraphQLGuard, DemoGuard } from "../__demo";
 
 @Resolver(of => Recipe)
 export class RecipesResolver {
@@ -28,7 +28,7 @@ export class RecipesResolver {
   }
 
   @Query(returns => [Recipe])
-  @UseGuards(DemoGuard)
+  @UseGuards(DemoGraphQLGuard)
   recipes(@Args() recipesArgs: RecipesArgs): Promise<Recipe[]> {
     return this.recipesService.findAll(recipesArgs);
   }
